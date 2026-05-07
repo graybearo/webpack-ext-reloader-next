@@ -1,0 +1,71 @@
+{
+	"name": "webpack-ext-reloader-next",
+	"version": "1.0.0",
+	"description": "The modern webpack reloader for browser extensions. Manifest V3 ready.",
+	"keywords": [
+		"webpack",
+		"webpack-plugin",
+		"chrome-extension",
+		"web-extension",
+		"manifest-v3",
+		"hot-reload",
+		"reloader",
+		"browser-extension"
+	],
+	"author": "graybear",
+	"license": "MIT",
+	"homepage": "https://github.com/graybearo/webpack-ext-reloader-next#readme",
+	"bugs": "https://github.com/graybearo/webpack-ext-reloader-next/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/graybearo/webpack-ext-reloader-next.git"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"bin": {
+		"webpack-ext-reloader-next": "./dist/cli.mjs"
+	},
+	"files": ["dist", "README.md", "LICENSE"],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsup",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"typecheck": "tsc --noEmit",
+		"prepack": "cp ../../README.md ../../LICENSE .",
+		"postpack": "rm -f README.md LICENSE"
+	},
+	"peerDependencies": {
+		"webpack": "^5.0.0"
+	},
+	"dependencies": {
+		"chokidar": "^4.0.1",
+		"picocolors": "^1.1.1",
+		"ws": "^8.18.0",
+		"zod": "^3.23.8"
+	},
+	"optionalDependencies": {
+		"node-notifier": "^10.0.1"
+	},
+	"devDependencies": {
+		"@types/chrome": "^0.0.280",
+		"@types/node": "^22.9.0",
+		"@types/node-notifier": "^8.0.5",
+		"@types/ws": "^8.5.13",
+		"ts-loader": "^9.5.1",
+		"tsup": "^8.3.0",
+		"typescript": "^5.6.0",
+		"vitest": "^2.1.0",
+		"webpack": "^5.95.0"
+	}
+}

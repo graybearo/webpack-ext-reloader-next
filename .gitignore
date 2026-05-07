@@ -1,0 +1,20 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+*.log
+*.tsbuildinfo
+coverage/
+.DS_Store
+.vscode/
+.idea/
+
+# Playwright MCP scratch (screenshots, console dumps, page snapshots)
+.playwright-mcp/
+
+# AI dev aids
+CLAUDE.md
+MESSAGES.md
+DECISIONS.md
+files/
+.claude/

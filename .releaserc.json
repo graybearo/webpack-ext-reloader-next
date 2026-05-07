@@ -1,0 +1,25 @@
+{
+	"branches": ["main"],
+	"repositoryUrl": "https://github.com/graybearo/webpack-ext-reloader-next.git",
+	"plugins": [
+		[
+			"@semantic-release/commit-analyzer",
+			{
+				"preset": "conventionalcommits"
+			}
+		],
+		[
+			"@semantic-release/release-notes-generator",
+			{
+				"preset": "conventionalcommits"
+			}
+		],
+		[
+			"@semantic-release/npm",
+			{
+				"pkgRoot": "packages/plugin"
+			}
+		],
+		"@semantic-release/github"
+	]
+}

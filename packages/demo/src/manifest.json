@@ -1,0 +1,20 @@
+{
+	"manifest_version": 3,
+	"name": "ext-reloader-next demo",
+	"version": "0.0.0",
+	"description": "Minimal MV3 extension for testing webpack-ext-reloader-next. (manifest test 2)",
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["content.js"]
+		}
+	],
+	"action": {
+		"default_popup": "popup.html",
+		"default_title": "ext-reloader-next demo"
+	},
+	"permissions": ["scripting", "tabs", "storage"]
+}
