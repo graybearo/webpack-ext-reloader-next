@@ -9,6 +9,10 @@ coverage/
 .vscode/
 .idea/
 
+# README + LICENSE are copied into packages/plugin/ at publish time (CI)
+packages/plugin/README.md
+packages/plugin/LICENSE
+
 # Playwright MCP scratch (screenshots, console dumps, page snapshots)
 .playwright-mcp/
 
