@@ -117,6 +117,64 @@ ships. You edit a content-script stylesheet, the matching `<link>` is
 swapped out with a cache-buster, and your Gmail (or whatever) tab keeps
 its scroll position and form state.
 
+## Migrating from webpack-ext-reloader
+
+If you're already using the original `webpack-ext-reloader` (or
+`webpack-extension-reloader`, or `@reorx/webpack-ext-reloader`),
+migration is mostly a rename.
+
+**1. Swap the dependency:**
+
+```bash
+pnpm remove webpack-ext-reloader
+pnpm add -D webpack-ext-reloader-next
+```
+
+**2. Update the import — `ExtensionReloader` → `ExtReloader`:**
+
+```diff
+- const ExtensionReloader = require("webpack-ext-reloader");
++ const { ExtReloader } = require("webpack-ext-reloader-next");
+
+  module.exports = {
+    plugins: [
+-     new ExtensionReloader({
+-       port: 9090,
+-       reloadPage: true,
+-       entries: {
+-         contentScript: "content",
+-         background: "background",
+-         extensionPage: "popup",
+-       },
+-     }),
++     new ExtReloader(),
+    ],
+  };
+```
+
+The `entries` mapping is no longer required — the plugin reads your
+`manifest.json` and infers them. You can still pass `entries` to
+override.
+
+**3. Delete any manual `chrome.runtime.reload()` workaround** you added
+because the old plugin's WebSocket died on MV3. The new client
+reconnects on every Chrome event, so the SW eviction cycle is handled
+automatically.
+
+**Option name compatibility:**
+
+| `webpack-ext-reloader` option | `webpack-ext-reloader-next` |
+|-------------------------------|------------------------------|
+| `port` | `port` (default `9012`, auto-increments) |
+| `reloadPage` | `reloadPage` (same default) |
+| `entries` | `entries` (now optional) |
+| `manifest` | `manifest` (now optional) |
+| — | `keepAliveInDev` (new, default `true`) |
+| — | `notifications.*` (new) |
+| — | `logLevel` (new) |
+
+That's the whole migration for the 90% case.
+
 ## Manifest V3 specifics
 
 - **Service worker reconnection** — clients reconnect on every Chrome

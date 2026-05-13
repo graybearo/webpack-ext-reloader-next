@@ -1,14 +1,21 @@
 {
 	"name": "webpack-ext-reloader-next",
 	"version": "1.0.0",
-	"description": "The modern webpack reloader for browser extensions. Manifest V3 ready.",
+	"description": "Webpack extension reloader for Chrome, Firefox, and Edge. Auto-reloads your browser extension on rebuild. MV3-ready successor to webpack-ext-reloader.",
 	"keywords": [
 		"webpack",
 		"webpack-plugin",
+		"webpack-extension-reloader",
+		"webpack-ext-reloader",
 		"chrome-extension",
+		"firefox-extension",
+		"edge-extension",
 		"web-extension",
+		"webextension",
 		"manifest-v3",
+		"mv3",
 		"hot-reload",
+		"live-reload",
 		"reloader",
 		"browser-extension"
 	],
