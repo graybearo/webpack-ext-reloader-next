@@ -9,12 +9,14 @@ how to set up, what to work on, and how to land a PR.
 git clone https://github.com/graybearo/webpack-ext-reloader-next
 cd webpack-ext-reloader-next
 pnpm install
-pnpm --filter demo dev
+pnpm --filter chrome-demo dev   # or firefox-demo / edge-demo
 ```
 
-Then open `chrome://extensions/`, enable Developer mode, click "Load
-unpacked", and pick `packages/demo/dist/`. Edit any file under
-`packages/demo/src/` and Chrome's extension reloads automatically.
+Then open the relevant browser's extensions page (`chrome://extensions/`,
+`edge://extensions/`, or `about:debugging#/runtime/this-firefox`),
+enable Developer mode if needed, and load `packages/demo/<browser>/dist/`.
+Edit any file under `packages/demo/<browser>/src/` and the extension
+reloads automatically.
 
 Requires Node 20+ and pnpm.
 
@@ -22,19 +24,22 @@ Requires Node 20+ and pnpm.
 
 ```text
 packages/
-  plugin/   The published webpack plugin
-  demo/     A minimal MV3 extension used for manual + e2e testing
+  plugin/         The published webpack plugin
+  demo/
+    chrome/      Minimal MV3 extension for Chrome
+    edge/        Minimal MV3 extension for Microsoft Edge
+    firefox/     Minimal MV3 extension for Firefox (adds background.scripts fallback)
 ```
 
-`packages/plugin` is what ships to npm. `packages/demo` is private
-infrastructure and is **not** published.
+`packages/plugin` is what ships to npm. The three demos under
+`packages/demo/` are private infrastructure and are **not** published.
 
 ## Running tests
 
 ```bash
-pnpm test                       # all packages
-pnpm --filter ./packages/plugin test    # plugin only
-pnpm --filter demo test         # the build integration test
+pnpm test                                  # all packages
+pnpm --filter ./packages/plugin test       # plugin only
+pnpm --filter chrome-demo test             # the build integration test (also: firefox-demo, edge-demo)
 ```
 
 Tests are deliberately minimal. We add a test only when it asserts

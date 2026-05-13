@@ -1,8 +1,8 @@
 {
-	"name": "demo",
+	"name": "firefox-demo",
 	"version": "0.0.0",
 	"private": true,
-	"description": "Minimal MV3 extension used to manually + e2e test the plugin.",
+	"description": "Minimal MV3 extension targeting Firefox, used to manually + e2e test the plugin.",
 	"scripts": {
 		"build": "webpack --config ./webpack.config.cjs",
 		"dev": "webpack --config ./webpack.config.cjs --watch",

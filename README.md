@@ -131,16 +131,30 @@ its scroll position and form state.
 
 <!-- assets/demo.gif — captured in Phase 6 once the reload pipeline is end-to-end -->
 
-A working MV3 extension lives in [`packages/demo`](packages/demo) and is
-the easiest way to see the plugin in action:
+Three MV3 demo extensions live under [`packages/demo/`](packages/demo) —
+one per target browser. They're identical except for the manifest:
+
+- **[`packages/demo/chrome`](packages/demo/chrome)** — plain
+  `background.service_worker`. Load via `chrome://extensions` →
+  "Load unpacked" → `packages/demo/chrome/dist`.
+- **[`packages/demo/edge`](packages/demo/edge)** — same manifest as Chrome.
+  Load via `edge://extensions` → "Load unpacked" → `packages/demo/edge/dist`.
+- **[`packages/demo/firefox`](packages/demo/firefox)** — `service_worker` +
+  `scripts` fallback + `browser_specific_settings.gecko.id`. Load via
+  `about:debugging#/runtime/this-firefox` → "Load Temporary Add-on" →
+  `packages/demo/firefox/dist/manifest.json`.
 
 ```bash
 git clone https://github.com/graybearo/webpack-ext-reloader-next
 cd webpack-ext-reloader-next
 pnpm install
-pnpm --filter demo dev
-# Then in Chrome → chrome://extensions → "Load unpacked" → packages/demo/dist
+pnpm --filter chrome-demo dev   # or firefox-demo / edge-demo
 ```
+
+Firefox MV3 still gates `background.service_worker` behind the
+`extensions.backgroundServiceWorker.enabled` pref, so any Firefox MV3
+manifest also needs a `background.scripts` fallback — that's what the
+firefox-demo shows.
 
 ## Standalone CLI (no webpack)
 

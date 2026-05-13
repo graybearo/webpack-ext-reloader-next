@@ -27,7 +27,7 @@ importers:
         specifier: ^5.6.0
         version: 5.9.3
 
-  packages/demo:
+  packages/demo/chrome:
     devDependencies:
       '@types/chrome':
         specifier: ^0.0.280
@@ -55,7 +55,67 @@ importers:
         version: 5.1.4(webpack@5.106.2)
       webpack-ext-reloader-next:
         specifier: workspace:*
-        version: link:../plugin
+        version: link:../../plugin
+
+  packages/demo/edge:
+    devDependencies:
+      '@types/chrome':
+        specifier: ^0.0.280
+        version: 0.0.280
+      '@types/node':
+        specifier: ^22.9.0
+        version: 22.19.17
+      copy-webpack-plugin:
+        specifier: ^12.0.2
+        version: 12.0.2(webpack@5.106.2)
+      ts-loader:
+        specifier: ^9.5.1
+        version: 9.5.7(typescript@5.9.3)(webpack@5.106.2)
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.19.17)(terser@5.47.1)
+      webpack:
+        specifier: ^5.95.0
+        version: 5.106.2(webpack-cli@5.1.4)
+      webpack-cli:
+        specifier: ^5.1.4
+        version: 5.1.4(webpack@5.106.2)
+      webpack-ext-reloader-next:
+        specifier: workspace:*
+        version: link:../../plugin
+
+  packages/demo/firefox:
+    devDependencies:
+      '@types/chrome':
+        specifier: ^0.0.280
+        version: 0.0.280
+      '@types/node':
+        specifier: ^22.9.0
+        version: 22.19.17
+      copy-webpack-plugin:
+        specifier: ^12.0.2
+        version: 12.0.2(webpack@5.106.2)
+      ts-loader:
+        specifier: ^9.5.1
+        version: 9.5.7(typescript@5.9.3)(webpack@5.106.2)
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.19.17)(terser@5.47.1)
+      webpack:
+        specifier: ^5.95.0
+        version: 5.106.2(webpack-cli@5.1.4)
+      webpack-cli:
+        specifier: ^5.1.4
+        version: 5.1.4(webpack@5.106.2)
+      webpack-ext-reloader-next:
+        specifier: workspace:*
+        version: link:../../plugin
 
   packages/plugin:
     dependencies:
